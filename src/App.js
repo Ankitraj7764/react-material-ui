@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import PostList from './PostList';
+import { CssBaseline, AppBar, Toolbar, Typography, Container } from '@mui/material';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const theme = createTheme({
+    palette: {
+        primary: {
+            main: '#3f51b5',
+        },
+        secondary: {
+            main: '#f50057',
+        },
+    },
+});
+
+const App = () => {
+    return (
+        <ThemeProvider theme={theme}>
+            <CssBaseline />
+            <AppBar position="static">
+                <Toolbar>
+                    <Typography variant="h6" color="inherit">
+                        Post Viewer
+                    </Typography>
+                </Toolbar>
+            </AppBar>
+            <Container>
+                <PostList />
+            </Container>
+        </ThemeProvider>
+    );
+};
 
 export default App;
